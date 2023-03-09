@@ -14,13 +14,13 @@
         state: started
     - name: copy Dockerfile from master to node
       copy:
-        src: /home/Dockerfile
-        dest: /home
+        src: /var/lib/jenkins/workspace/ansible-pipeline1/Dockerfile
+        dest: /home/ubuntu
 
     - name: build image using Dockerfile
       command: docker build -t myimage .
       args:
-        chdir: /home
+        chdir: /home/ubuntu
     - name: docker tag image
       command: docker tag myimage sindhukorampalli/new-image:1.0
     - name: login to the dockerhub
