@@ -1,0 +1,28 @@
+---
+- name: create docker image and push to dockerhub
+  hosts: all
+  become: yes
+  tasks:
+    - name: install docker 
+      apt:
+        name: docker.io
+        state: present
+
+    - name: start docker
+      service:
+        name: docker
+        state: started
+    - name: build image using Dockerfile
+      command: docker build -t myimage .
+      args:
+        chdir: /home
+    - name: docker tag image
+      command: docker tag myimage sindhukorampalli/new-image:1.0
+    - name: login to the dockerhub
+      docker_login:
+        username: sindhukorampalli
+        password: sindhu@123
+        reauthorize: true
+    - name: push docker image
+      command: docker push sindhukorampalli/new-image:1.0
+...
