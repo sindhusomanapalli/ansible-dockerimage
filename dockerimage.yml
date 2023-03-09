@@ -14,6 +14,8 @@
         state: started
     - name: build image using Dockerfile
       command: docker build -t myimage .
+      args:
+        chdir: .
     - name: docker tag image
       command: docker tag myimage sindhukorampalli/new-image:1.0
     - name: login to the dockerhub
@@ -22,8 +24,7 @@
         password: sindhu@123
         reauthorize: true
     - name: push docker image
-      command: docker push sindhukorampalli/new-image:1.0
+      command: docker push sindhukorampalli/new-image1:1.0
 ...
 
 
-...
