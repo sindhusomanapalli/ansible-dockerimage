@@ -22,7 +22,7 @@
       args:
         chdir: /home/ubuntu
     - name: docker tag image
-      command: docker tag myimage sindhukorampalli/new-image:1.0
+      command: docker tag myimage sindhukorampalli/new-image1:1.0
     - name: login to the dockerhub
       docker_login:
         username: sindhukorampalli
