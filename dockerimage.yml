@@ -15,7 +15,7 @@
     - name: build image using Dockerfile
       command: docker build -t myimage .
       args:
-        chdir: /home
+        chdir: .
     - name: docker tag image
       command: docker tag myimage sindhukorampalli/new-image:1.0
     - name: login to the dockerhub
