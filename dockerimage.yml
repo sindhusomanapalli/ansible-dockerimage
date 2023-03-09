@@ -12,4 +12,18 @@
       service:
         name: docker
         state: started
+    - name: build image using Dockerfile
+      command: docker build -t myimage .
+    - name: docker tag image
+      command: docker tag myimage sindhukorampalli/new-image:1.0
+    - name: login to the dockerhub
+      docker_login:
+        username: sindhukorampalli
+        password: sindhu@123
+        reauthorize: true
+    - name: push docker image
+      command: docker push sindhukorampalli/new-image:1.0
+...
+
+
 ...
